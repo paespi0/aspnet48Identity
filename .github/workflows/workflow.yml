@@ -44,7 +44,7 @@ jobs:
       # Build and Publish .NET Framework Web App
       - name: Build and Publish Web App
         #run: msbuild ./aspnet-webform-multi-identity/aspnet-webform-multi-identity.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
-        run: msbuild ./aspnet-webform-multi-identity/aspnet-webform-multi-identity.sln -p:DeployOnBuild=True -p:PublishProfile="FolderProfile" -p:PublishProfileRootFolder=${{ env.AZURE_WEBAPP_PACKAGE_PATH }} -p:Configuration=Debug
+        run: msbuild ./aspnet-webform-multi-identity/aspnet-webform-multi-identity.sln -p:DeployOnBuild=True -p:PublishProfileRootFolder=${{ env.AZURE_WEBAPP_PACKAGE_PATH }} -p:Configuration=Debug
         #run: msbuild SiteFolder\Site.csproj -p:DeployOnBuild=True -p:PublishProfile="FolderProfile" -p:PublishProfileRootFolder=D:\a\MyApp\MyApp\SiteFolderI\Properties\PublishProfiles -p:Configuration=Debug
 
       
