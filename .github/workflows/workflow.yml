@@ -78,23 +78,23 @@ jobs:
           package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}'
           slot-name: staging
 
-      - name: Login for az cli commands 
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+   #   - name: Login for az cli commands 
+   #     uses: azure/login@v1
+   #     with:
+   #       creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: create db connection string
-        run: |
-          CONN_STR=$(az sql db show-connection-string --client ado.net --server ${{ env.SQLSERVER_NAME }} --name ${{ env.DATABASE_NAME }} -o tsv)
-          CONN_STR=$(echo $CONN_STR | sed "s/<username>/${{ env.SQLADMIN_LOGIN }}/g")
-          CONN_STR=$(echo $CONN_STR | sed "s/<password>/${{ env.SQLADMIN_PASS }}/g")
-          echo "SQL_DB_CONN_STR=$CONN_STR" >> $GITHUB_ENV
-      - name: Update Database
-        run: |
-          dotnet tool install --global dotnet-ef
-          dotnet ef database update
-        env:
-          ConnectionStrings__MyDbConnection: ${{ env.SQL_DB_CONN_STR }}
+      #- name: create db connection string
+      #  run: |
+      #    CONN_STR=$(az sql db show-connection-string --client ado.net --server ${{ env.SQLSERVER_NAME }} --name ${{ env.DATABASE_NAME }} -o tsv)
+      #    CONN_STR=$(echo $CONN_STR | sed "s/<username>/${{ env.SQLADMIN_LOGIN }}/g")
+      #    CONN_STR=$(echo $CONN_STR | sed "s/<password>/${{ env.SQLADMIN_PASS }}/g")
+      #    echo "SQL_DB_CONN_STR=$CONN_STR" >> $GITHUB_ENV
+      #- name: Update Database
+      #  run: |
+      #    dotnet tool install --global dotnet-ef
+      #    dotnet ef database update
+      #  env:
+      #    ConnectionStrings__MyDbConnection: ${{ env.SQL_DB_CONN_STR }}
       
       - name: Swap to production slot
         run: |
