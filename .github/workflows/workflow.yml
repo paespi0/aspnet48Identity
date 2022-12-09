@@ -43,7 +43,8 @@ jobs:
       
       # Build and Publish .NET Framework Web App
       - name: Build and Publish Web App
-        run: msbuild ./aspnet-webform-multi-identity/aspnet-webform-multi-identity.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+        #run: msbuild ./aspnet-webform-multi-identity/aspnet-webform-multi-identity.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+        run: msbuild ./aspnet-webform-multi-identity/aspnet-webform-multi-identity.sln /p:Configuration=Release /p:DeployOnBuild=true
       
       # Upload Build artifact
       - name: Upload Artifact
@@ -52,7 +53,7 @@ jobs:
           name: published_webapp
           path: bin\Release\Publish
           
-      
+
       # Setup .NET Core SDK
       #- name: Setup .NET Core
       #  uses: actions/setup-dotnet@v1
