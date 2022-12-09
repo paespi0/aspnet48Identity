@@ -13,7 +13,7 @@ on:
 # 2. Change these variables for your configuration:
 env:
   AZURE_WEBAPP_NAME: norcom-webappsql #demo-webappsql-gh-actions-unique    # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: './aspnet-webform-multi-identity/aspnet-webform-multi-identity/'      # set this to the path to your web app project, defaults to the repository root
+  AZURE_WEBAPP_PACKAGE_PATH: './aspnet-webform-multi-identity/aspnet-webform-multi-identity'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: 4.8 #'3.1'           # set this to the dot net version to use
   AZURE_RESOURCEGROUP_NAME: demo-webappsql-gh-actions # set this to your preferred resource group name
   SQLSERVER_NAME: raadar-webappsql-srv #demo-webappsql-gh-actions-srv                          # set this to your preferred sql server name
