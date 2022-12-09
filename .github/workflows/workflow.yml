@@ -43,7 +43,7 @@ jobs:
       
       # Build and Publish .NET Framework Web App
       - name: Build and Publish Web App
-        run: msbuild .\aspnet-webform-multi-identify\aspnet-webform-multi-identity.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
+        run: msbuild ./aspnet-webform-multi-identity/aspnet-webform-multi-identity.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
       
       # Upload Build artifact
       - name: Upload Artifact
