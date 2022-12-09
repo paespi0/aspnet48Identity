@@ -39,7 +39,7 @@ jobs:
     
       # Restore Nuget Packages
       - name: restore-nuget-packages
-        run: nuget restore .\aspnet-webform-multi-identify\aspnet-webform-multi-identity.sln
+        run: nuget restore .\aspnet48Identity\aspnet-webform-multi-identity\aspnet-webform-multi-identity.sln
       
       # Build and Publish .NET Framework Web App
       - name: Build and Publish Web App
