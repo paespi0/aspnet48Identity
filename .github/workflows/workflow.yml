@@ -13,7 +13,7 @@ on:
 # 2. Change these variables for your configuration:
 env:
   AZURE_WEBAPP_NAME: norcom-webappsql #demo-webappsql-gh-actions-unique    # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  AZURE_WEBAPP_PACKAGE_PATH: './aspnet-webform-multi-identity/aspnet-webform-multi-identity/'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: 4.8 #'3.1'           # set this to the dot net version to use
   AZURE_RESOURCEGROUP_NAME: demo-webappsql-gh-actions # set this to your preferred resource group name
   SQLSERVER_NAME: raadar-webappsql-srv #demo-webappsql-gh-actions-srv                          # set this to your preferred sql server name
@@ -44,14 +44,16 @@ jobs:
       # Build and Publish .NET Framework Web App
       - name: Build and Publish Web App
         #run: msbuild ./aspnet-webform-multi-identity/aspnet-webform-multi-identity.sln /p:Configuration=Release /p:DeployOnBuild=true /p:PublishProfile=FolderProfile
-        run: msbuild ./aspnet-webform-multi-identity/aspnet-webform-multi-identity.sln /p:Configuration=Release /p:DeployOnBuild=true
+        run: msbuild ./aspnet-webform-multi-identity/aspnet-webform-multi-identity.sln -p:DeployOnBuild=True -p:PublishProfile="FolderProfile" -p:PublishProfileRootFolder=${{ env.AZURE_WEBAPP_PACKAGE_PATH }} -p:Configuration=Debug
+        #run: msbuild SiteFolder\Site.csproj -p:DeployOnBuild=True -p:PublishProfile="FolderProfile" -p:PublishProfileRootFolder=D:\a\MyApp\MyApp\SiteFolderI\Properties\PublishProfiles -p:Configuration=Debug
+
       
       # Upload Build artifact
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3.1.1
-        with:
-          name: published_webapp
-          path: bin\Release\Publish
+      #- name: Upload Artifact
+      #  uses: actions/upload-artifact@v3.1.1
+      #  with:
+      #    name: published_webapp
+      #    path: bin\Release\Publish
           
 
       # Setup .NET Core SDK
